@@ -1,10 +1,22 @@
+Excellent — I’ll draft you a clean, professional `README.md` for a GitHub repository to showcase this **Text-to-SQL Generator using LangChain, Ollama, and Streamlit** project.
 
+---
+
+## 📂 Repository Structure Suggestion
+
+You might want to organize your repo like this:
+
+```
 text-to-sql-ollama/
 ├── app.py                  # your Streamlit app (the code you posted)
 ├── testdb.sqlite           # your SQLite database (or .gitignore it if sensitive)
 ├── requirements.txt        # Python dependencies
 └── README.md               # project documentation
+```
 
+---
+
+## 📄 README.md
 
 ````markdown
 # 📝 Text-to-SQL Generator with LangChain, Ollama, and Streamlit
@@ -15,6 +27,7 @@ A lightweight web app that converts natural language questions into executable S
 
 ![App Screenshot](link-to-screenshot-or-demo.gif)
 
+---
 
 ## 📌 Features
 
@@ -141,3 +154,10 @@ langchain
 langchain-ollama
 deepseek
 ollama
+````
+
+---
+
+## ✅ Final Step
+
+If you’d like, I can bundle this whole thing into a `.zip` structure or generate the LICENSE file as well — just let me know. Would you like me to?

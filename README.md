@@ -1,6 +1,5 @@
 
 
----
 
 ## 📄 Text-to-SQL Query Generator
 

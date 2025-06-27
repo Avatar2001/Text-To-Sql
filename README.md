@@ -1,91 +1,90 @@
-Excellent — let’s reformat your README into a **developer-centric, minimalist clean format** — prioritizing code blocks, headings, and crisp bullet points without excessive emojis or fluff.
 
-This version reads like a polished technical documentation README, like those you'd see in well-maintained open-source repos like LangChain or FastAPI.
 
 ---
 
-## 📄 Clean, Minimalist `README.md`
+## 📄 Text-to-SQL Query Generator
 
-```markdown
-# Text-to-SQL Generator with LangChain, Ollama, and Streamlit
-
-A simple and effective application that converts natural language queries into SQL statements.  
-Built using **LangChain**, **Ollama**, **DeepSeek-R1**, and **Streamlit** for a lightweight, local, and explainable workflow.
+An intelligent AI-powered tool built with **LangChain**, **Ollama**, and **Streamlit** to dynamically convert natural language queries into SQL statements based on a live database schema. This enables non-technical users to interact with relational databases intuitively through plain language prompts.
 
 ---
 
-## Overview
+## 📖 Project Overview
 
-This tool allows non-technical users to interact with a relational database by describing the data they need in natural language.  
-It uses a local LLM model via Ollama to generate SQL queries dynamically, based on the live database schema.
-
----
-
-## Features
-
-- Extracts database schema using **SQLAlchemy**
-- Converts natural language into SQL using **LangChain** and **DeepSeek-R1**
-- Streamlit-based interactive frontend
-- Clean prompt template to enforce SQL-only output
+**Text-to-SQL Query Generator** bridges the gap between natural language and structured query languages. By leveraging a local LLM via Ollama and real-time schema extraction with SQLAlchemy, this tool generates accurate, executable SQL queries from plain-text descriptions, displayed through a clean Streamlit interface.
 
 ---
 
-## Tech Stack
+## 🚀 Features
 
-- Python
-- LangChain
-- Ollama
-- DeepSeek R1 (8B)
-- Streamlit
-- SQLAlchemy
-- SQLite (as demo database)
+✅ Extract live database schema via SQLAlchemy
+✅ Generate context-aware, SQL-only queries using DeepSeek-R1 LLM via Ollama
+✅ Enforce clean, reliable prompt templates to avoid irrelevant responses
+✅ Provide an intuitive, interactive frontend with Streamlit
+✅ Clean the generated query output for safety and usability
 
 ---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+* **Python**
+* **LangChain** (Prompt management and LLM chaining)
+* **Ollama** (Local LLM inference)
+* **DeepSeek R1 8B** (LLM for query generation)
+* **Streamlit** (Interactive web frontend)
+* **SQLAlchemy** (Database schema inspection)
+* **SQLite** (Demo relational database)
+
+---
+
+## 📝 System Architecture
+
+**Components:**
+
+* 📖 `Schema Extraction Module`: Inspects the connected SQLite database and retrieves table/column structure.
+* 📝 `Prompt Template`: Defines strict instructions for SQL-only outputs from the model, based on the current schema and user question.
+* 🧠 `LLM Query Generator`: Runs DeepSeek-R1 via Ollama with LangChain to produce SQL queries dynamically.
+* 🖥️ `Streamlit UI`: Collects user questions and displays generated SQL queries interactively.
+* 🧹 `Output Cleaner`: Removes unnecessary model artifacts (like `<think>` tags) from LLM outputs before displaying SQL.
+
+---
+
+## 📂 Project Structure
 
 ```
-
 text-to-sql-ollama/
-├── app.py               # Main Streamlit app
-├── testdb.sqlite        # SQLite database (demo)
-├── requirements.txt     # Dependencies
-└── README.md            # Documentation
-
-````
+├── app.py                   # Streamlit web app
+├── testdb.sqlite            # Demo SQLite database
+├── requirements.txt         # Dependencies
+├── README.md                # Project documentation
+```
 
 ---
 
-## Installation
+## ⚙️ Installation & Setup
 
-1. **Clone the repository**
+1️⃣ **Clone the repository**
 
 ```bash
 git clone https://github.com/yourusername/text-to-sql-ollama.git
 cd text-to-sql-ollama
-````
+```
 
-2. **Install Python dependencies**
+2️⃣ **Install Python dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Install Ollama and pull the required model**
+3️⃣ **Install Ollama and Pull the LLM Model**
 
-Download Ollama from: [https://ollama.com](https://ollama.com)
-
-Then pull the DeepSeek R1 model:
+Download Ollama: [https://ollama.com](https://ollama.com)
+Then pull the DeepSeek-R1 model:
 
 ```bash
 ollama pull deepseek-r1:8b
 ```
 
----
-
-## Running the Application
-
-Start the Streamlit app:
+4️⃣ **Run the application**
 
 ```bash
 streamlit run app.py
@@ -93,42 +92,13 @@ streamlit run app.py
 
 ---
 
-## How It Works
+## 📊 Example Use Case
 
-1. **Schema Extraction**
+Convert a plain-text request like:
 
-   * Uses SQLAlchemy to inspect the SQLite database and extract the table names and columns.
+> *“Get the names of all users who placed an order over \$100.”*
 
-2. **Prompt Generation**
-
-   * Formats a custom LangChain prompt, enforcing SQL-only outputs based on the schema and user query.
-
-3. **LLM Inference via Ollama**
-
-   * DeepSeek R1 model processes the prompt locally to generate the SQL.
-
-4. **Output Rendering**
-
-   * Displays the generated SQL query within the Streamlit interface.
-
----
-
-## Example
-
-**Database Schema**
-
-```json
-{
-  "users": ["id", "name", "email"],
-  "orders": ["id", "user_id", "product", "price"]
-}
-```
-
-**Input Query**
-
-> Get the names of all users who placed an order over \$100.
-
-**Generated SQL**
+**Into an executable SQL query:**
 
 ```sql
 SELECT u.name
@@ -137,11 +107,21 @@ JOIN orders o ON u.id = o.user_id
 WHERE o.price > 100;
 ```
 
+Using the live schema from your connected database.
+
 ---
 
-## Dependencies
+## 📄 Output
 
-Listed in `requirements.txt`:
+* **Generated SQL query**: Clean, ready-to-execute SQL displayed interactively via Streamlit
+* **Database Schema**: Real-time schema extraction visible within the system
+* **Prompt logs (optional)**: Can be extended to log prompts and responses
+
+---
+
+## 📃 Dependencies
+
+Listed in `requirements.txt`
 
 ```
 streamlit
@@ -154,36 +134,17 @@ deepseek
 
 ---
 
-## License
-
-Distributed under the MIT License. See `LICENSE` for details.
-
----
-
-## Author
+## 📬 Contact
 
 **Mohamed Sherif**
-
-* [LinkedIn](https://www.linkedin.com/in/mohamed-sherif-35a488195/)
-* [GitHub](https://github.com/Avatar2001)
-
----
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome.
-Feel free to open a pull request or submit an issue on GitHub.
-
-```
+[LinkedIn](https://www.linkedin.com/in/mohamed-sherif-35a488195/)
+[GitHub](https://github.com/Avatar2001)
 
 ---
 
-## 📌 Notes  
-✅ This is a cleaner, engineering-centric format:  
-- No emojis in lists  
-- Clean section headings  
-- Logical flow: Overview → Features → Tech Stack → Setup → Usage → Example → Dependencies  
-- Includes Contributing section  
+## 📖 License
 
-Would you like a **notebook-based version** for local testing too, or a **CLI alternative README** format for terminal-based interaction? I can prep those as well.
-```
+This project is open-sourced under the MIT License. See the `LICENSE` file for details.
+
+---
+
